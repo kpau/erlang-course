@@ -9,13 +9,14 @@
 -module(helloworld).
 -author("knikolov").
 
--include_lib("eunit/include/eunit.hrl").
+-include("../../Test/assertion.hrl").
 
 %% API
 -export([test/0, hello/1]).
 
-test() ->
-  assert:equal("Hello Kiro!", greeting_msg("Kiro")).
+test() -> [
+  ?assertEqual("Hello Kiro!", greeting_msg("Kiro"))
+].
 
 hello(Name) ->
   io:fwrite("~s! ~n", [greeting_msg(Name)]).

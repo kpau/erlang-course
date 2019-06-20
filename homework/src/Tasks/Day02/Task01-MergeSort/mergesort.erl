@@ -12,7 +12,8 @@
 %% API
 -export([test/0]).
 
-test() ->
-  ok.
+test() -> [
+
+].
 
 

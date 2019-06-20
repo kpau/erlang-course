@@ -38,12 +38,13 @@ test_all(Tokens) ->
 
 test_single({F, T}) ->
   io:format(" > ~p~n", [F]),
-  try (list_to_existing_atom(T)):test() of
-    _ -> ok
-  catch
-    _:Shit -> io:format("~p~n", [Shit])
-  end,
-  io:format(" * done.~n").
+  TestResults = (list_to_existing_atom(T)):test(),
+  [ test_result(TestResult) || TestResult <- TestResults].
+
+test_result({pass, _}) -> ok;
+test_result({fail, { Test, {module, Mod}, {line, Line}, {expression, Expr}, {expected, Expc}, {value, Val} }}) ->
+  io:format("[~p.erl:~p] ~p: ~p, ~p - ~p~n", [Mod, Line, Test, Expc, Val, Expr]),
+  ok.
 
 cleanup(Tokens) ->
   [file:delete(T ++ ".beam") || {_, T} <- Tokens].

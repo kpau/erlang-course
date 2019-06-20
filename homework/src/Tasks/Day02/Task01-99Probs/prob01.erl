@@ -8,22 +8,19 @@
 %%%-------------------------------------------------------------------
 -module(prob01).
 -author("knikolov").
--include_lib("eunit/include/eunit.hrl").
+-include_lib("../../../Test/assertion.hrl").
 
 %% API
 -export([test/0, last/1]).
 
-test() ->
-  ?assertEqual(1, 2),
-
-  assert:equal(3, last([3])),
-  assert:equal(5, last([2,5])),
-  assert:equal(4, last([1,2,3,4])),
-  assert:equal(97, last("dsa")),
-  assert:equal(a, last([d,s,a])),
-  assert:equal(a, last([1, "a", a])),
-
-  ok.
+test() -> [
+  ?assertEqual(3, last([3])),
+  ?assertEqual(5, last([2,5])),
+  ?assertEqual(4, last([1,2,3,4])),
+  ?assertEqual(97, last("dsa")),
+  ?assertEqual(a, last([d,s,a])),
+  ?assertEqual(a, last([1, "a", a]))
+].
 
 %% Problem 1
 %% (*) Find the last element of a list.

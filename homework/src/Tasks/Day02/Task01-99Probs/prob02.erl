@@ -8,19 +8,19 @@
 %%%-------------------------------------------------------------------
 -module(prob02).
 -author("knikolov").
--include_lib("eunit/include/eunit.hrl").
+-include_lib("../../../Test/assertion.hrl").
 
 %% API
 -export([test/0, prelast/1]).
 
-test() ->
-  assert:equal(2, prelast([2,5])),
-  assert:equal(3, prelast([1,2,3,4])),
-  assert:equal(97, prelast("dsad")),
-  assert:equal(s, prelast([d,s,a])),
-  assert:equal("a", prelast([1, "a", a])),
 
-  ok.
+test() -> [
+  ?assertEqual(2, prelast([2,5])),
+  ?assertEqual(3, prelast([1,2,3,4])),
+  ?assertEqual(97, prelast("dsad")),
+  ?assertEqual(s, prelast([d,s,a])),
+  ?assertEqual("a", prelast([1, "a", a]))
+].
 
 %% Problem 2
 %% (*) Find the last but one element of a list.
