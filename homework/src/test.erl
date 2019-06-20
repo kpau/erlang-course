@@ -13,7 +13,7 @@
 -define(MODS, "./Tasks/").
 
 %% API
--export([dir/0]).
+-export([dir/0, dir/1]).
 
 %% scans both a module directory and a test directory, compiles the
 %% modules inside and then call for tests to be ran.
@@ -43,7 +43,7 @@ test_single({F, T}) ->
 
 test_result({pass, _}) -> ok;
 test_result({fail, { Test, {module, Mod}, {line, Line}, {expression, Expr}, {expected, Expc}, {value, Val} }}) ->
-  io:format("[~p.erl:~p] ~p: ~p, ~p - ~p~n", [Mod, Line, Test, Expc, Val, Expr]),
+  io:format("[~p.erl:~p] ~p: (~p, ~p) ~p~n", [Mod, Line, Test, Expc, Val, Expr]),
   ok.
 
 cleanup(Tokens) ->
