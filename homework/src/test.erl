@@ -32,26 +32,46 @@ dir(ModulePath) ->
 
 %% assumes pre-compiled modules
 test_all(Tokens) ->
-  io:format("Start All~n"),
-  [test_single(Token) || Token <- Tokens],
-  io:format("End All~n").
+  io:format("- Start All~n"),
+  {AllTotal, AllPass, AllFail} = test_single(Tokens, {0, 0, 0}),
+  io:format("- End All~n"),
+  io:format("Total: ~p\t|\tPass: ~p\t|\tFail: ~p~n", [AllTotal, AllPass, AllFail]).
 
-test_single({F, T}) ->
-  io:format(" > ~p~n", [F]),
-  TestResults = (list_to_existing_atom(T)):test(),
-  [ test_result(TestResult) || TestResult <- TestResults].
+test_single([], Counts) -> Counts;
+test_single([{File, Token} | T], {AllTotal, AllPass, AllFail}) ->
+  io:format("\t> ~-45.45s\t", [File]),
+  TestResults = (list_to_existing_atom(Token)):test(),
+  {Total, Pass, Fail} = test_results(TestResults, {0, 0, 0}),
+  print_tests({Total, Pass, Fail}),
+  print_test(lists:reverse(TestResults)),
+  test_single(T, {AllTotal + Total, AllPass + Pass, AllFail + Fail}).
 
-test_result({pass, _}) -> ok;
-test_result({fail, { Test, {module, Mod}, {line, Line}, {expression, Expr}, {expected, Expc}, {value, Val} }}) ->
-  io:format("[~p.erl:~p] ~p: (~p, ~p) ~p~n", [Mod, Line, Test, Expc, Val, Expr]),
+test_results([], Counts) -> Counts;
+test_results([Res | T], Counts) ->
+  test_results(T, test_result(Res, Counts)).
+
+test_result({pass, _}, {Total, Pass, Fail}) -> {Total + 1, Pass + 1, Fail};
+test_result({fail, _}, {Total, Pass, Fail}) -> {Total + 1, Pass, Fail + 1}.
+
+print_tests({Total, _, 0}) ->
+  io:format("~p tests~n", [Total]),
+  ok;
+print_tests({Total, _, Fail}) ->
+  io:format("~p tests\t\t~p fail~n", [Total, Fail]),
   ok.
+
+print_test([]) -> ok;
+print_test([{pass, _} | T]) -> print_test(T);
+print_test([{fail, {Test, {module, Mod}, {line, Line}, {expression, Expr}, {expected, Expc}, {value, Val}}} | T]) ->
+  io:format("[~p.erl:~p] ~p: (~p, ~p) ~p~n", [Mod, Line, Test, Expc, Val, Expr]),
+  print_test(T).
 
 cleanup(Tokens) ->
   [file:delete(T ++ ".beam") || {_, T} <- Tokens].
 
 tokens(FileList) ->
-  Split = [{ File, lists:nth(1, string:tokens(File, ".")) } || File <- FileList],
-  [{Path, lists:last(string:tokens(File, "./"))}|| {Path, File} <- Split].
+  Split = [{File, lists:nth(1, string:tokens(File, "."))} || File <- FileList],
+  [{Path, lists:last(string:tokens(File, "./"))} || {Path, File} <- Split].
 
 %% get module .erl file names from a directory
 module_list(Path) ->
@@ -68,7 +88,7 @@ list_files_recursive(Path, PathList, Files) ->
   loop(Path, PathContents, Files).
 
 loop(_, [], Files) -> Files;
-loop(Path, [Content|PathContents], Files) ->
+loop(Path, [Content | PathContents], Files) ->
   list_files_recursive(Path ++ "/" ++ Content, file:list_dir(Path ++ "/" ++ Content), Files) ++
   loop(Path, PathContents, Files).
 
@@ -80,7 +100,7 @@ compile(FileName) ->
   compile:file(FileName, [report, verbose, export_all]).
 
 warnings() ->
-  Warns = [{Mod, get_warnings(Mod)} || {Mod,_Path} <- code:all_loaded(),
+  Warns = [{Mod, get_warnings(Mod)} || {Mod, _Path} <- code:all_loaded(),
     has_warnings(Mod)],
   show_warnings(Warns).
 
