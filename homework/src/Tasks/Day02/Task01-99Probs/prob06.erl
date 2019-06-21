@@ -17,19 +17,20 @@
 test() -> [
   ?assertEqual(true, is_palindrome([])),
   ?assertEqual(true, is_palindrome([2])),
-  ?assertEqual(true, is_palindrome([4,2,2,4])),
-  ?assertEqual(false, is_palindrome([4,2,3,4])),
-  ?assertEqual(false, is_palindrome([1,3,3,4])),
+  ?assertEqual(true, is_palindrome([4, 2, 2, 4])),
+  ?assertEqual(false, is_palindrome([4, 2, 3, 4])),
+  ?assertEqual(false, is_palindrome([1, 3, 3, 4])),
   ?assertEqual(false, is_palindrome("dsad")),
   ?assertEqual(true, is_palindrome("dsasd")),
-  ?assertEqual(false, is_palindrome([d,s,a])),
-  ?assertEqual(true, is_palindrome([a,s,a])),
+  ?assertEqual(false, is_palindrome([d, s, a])),
+  ?assertEqual(true, is_palindrome([a, s, a])),
   ?assertEqual(false, is_palindrome([1, "a", a])),
   ?assertEqual(true, is_palindrome([1, "a", a, "a", 1]))
 ].
 
 %% Problem 6
 %% (*) Find out whether a list is a palindrome. A palindrome can be read forward or backward; e.g. (x a m a x).
+
 is_palindrome(List) ->
   {FirstReversed, Second} = split(List, List, []),
   FirstReversed =:= Second.

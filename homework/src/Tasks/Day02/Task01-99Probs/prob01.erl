@@ -11,18 +11,19 @@
 -include_lib("../../../Test/assertion.hrl").
 
 %% API
--export([test/0, last/1]).
+-export([test/0, myLast/1]).
 
 test() -> [
-  ?assertEqual(3, last([3])),
-  ?assertEqual(5, last([2,5])),
-  ?assertEqual(4, last([1,2,3,4])),
-  ?assertEqual(97, last("dsa")),
-  ?assertEqual(a, last([d,s,a])),
-  ?assertEqual(a, last([1, "a", a]))
+  ?assertEqual(3, myLast([3])),
+  ?assertEqual(5, myLast([2, 5])),
+  ?assertEqual(4, myLast([1, 2, 3, 4])),
+  ?assertEqual(97, myLast("dsa")),
+  ?assertEqual(a, myLast([d, s, a])),
+  ?assertEqual(a, myLast([1, "a", a]))
 ].
 
 %% Problem 1
 %% (*) Find the last element of a list.
-last([X]) -> X;
-last([_|T]) -> last(T).
+
+myLast([X]) -> X;
+myLast([_ | T]) -> myLast(T).

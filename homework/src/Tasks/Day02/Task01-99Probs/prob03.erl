@@ -11,19 +11,19 @@
 -include_lib("../../../Test/assertion.hrl").
 
 %% API
--export([test/0, get_kth/2]).
-
+-export([test/0, element_at/2]).
 
 test() -> [
-  ?assertEqual(2, get_kth(1, [2])),
-  ?assertEqual(3, get_kth(1, [3,5])),
-  ?assertEqual(4, get_kth(4, [1,2,3,4])),
-  ?assertEqual(97, get_kth(3, "dsad")),
-  ?assertEqual(s, get_kth(2, [d,s,a])),
-  ?assertEqual("a", get_kth(2, [1, "a", a]))
+  ?assertEqual(2, element_at(1, [2])),
+  ?assertEqual(3, element_at(1, [3, 5])),
+  ?assertEqual(4, element_at(4, [1, 2, 3, 4])),
+  ?assertEqual(97, element_at(3, "dsad")),
+  ?assertEqual(s, element_at(2, [d, s, a])),
+  ?assertEqual("a", element_at(2, [1, "a", a]))
 ].
 
 %% Problem 3
 %% (*) Find the K'th element of a list. The first element in the list is number 1.
-get_kth(1, [X|_]) -> X;
-get_kth(K, [_|T]) -> get_kth(K-1, T).
+
+element_at(1, [X | _]) -> X;
+element_at(K, [_ | T]) -> element_at(K - 1, T).
