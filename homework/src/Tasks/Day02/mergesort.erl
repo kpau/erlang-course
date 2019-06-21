@@ -8,7 +8,7 @@
 %%%-------------------------------------------------------------------
 -module(mergesort).
 -author("knikolov").
--include_lib("../../../Test/assertion.hrl").
+-include_lib("../../Test/assertion.hrl").
 
 %% API
 -export([test/0, sort/1]).
