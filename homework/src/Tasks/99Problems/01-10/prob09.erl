@@ -27,7 +27,7 @@ test() -> [
   ?assertEqual([[1, 1, 1], ["a", "a"], [a, a, a, a]], pack([1, 1, 1, "a", "a", a, a, a, a]))
 ].
 
-%% Problem 8
+%% Problem 9
 %% (**) Pack consecutive duplicates of list elements into sublists. If a list contains repeated elements they should be placed in separate sublists.
 
 pack(List) -> lists:reverse(pack(List, [])).
