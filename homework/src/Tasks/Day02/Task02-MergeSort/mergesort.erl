@@ -25,12 +25,13 @@ test() -> [
   ].
 
 %% Implement merge sort.
+sort(List) -> lists:reverse(mergesort(List)).
 
-sort(List) -> sort(List, []).
-
-sort(List, _) ->
+mergesort([]) -> [];
+mergesort([E]) -> [E];
+mergesort(List) ->
   {Left, Right} = split(List),
-  merge(sort(Left), sort(Right)).
+  merge(mergesort(Left), mergesort(Right)).
 
 
 split(List) ->
