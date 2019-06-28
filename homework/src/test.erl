@@ -43,7 +43,7 @@ test_single([{File, Token} | T], {AllTotal, AllPass, AllFail}) ->
   TestResults = (list_to_existing_atom(Token)):test(),
   {Total, Pass, Fail} = test_results(TestResults, {0, 0, 0}),
   print_tests({Total, Pass, Fail}),
-  print_test(lists:reverse(TestResults)),
+  print_test(TestResults),
   test_single(T, {AllTotal + Total, AllPass + Pass, AllFail + Fail}).
 
 test_results([], Counts) -> Counts;
