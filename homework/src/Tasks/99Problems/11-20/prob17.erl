@@ -26,8 +26,8 @@ test() -> [
 %% (*) Split a list into two parts; the length of the first part is given.
 %% Do not use any predefined predicates.
 
-split(Input, N) -> split(Input, N, N, []).
+split(Input, N) -> split(Input, N, []).
 
-split(Input , _, 0, FirstPart) -> {lists:reverse(FirstPart), Input};
-split([H | T], N, CurN, FirstPart) ->
-  split(T, N, CurN - 1, [H | FirstPart]).
+split(Input , 0, FirstPart) -> {lists:reverse(FirstPart), Input};
+split([H | T], CurN, FirstPart) ->
+  split(T, CurN - 1, [H | FirstPart]).
