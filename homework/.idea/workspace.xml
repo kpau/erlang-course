@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3879afc3-33b7-4f80-b042-e770487d3d2b" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Tasks/99Problems/11-20/prob18.erl" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Tasks/99Problems/11-20/prob19.erl" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Tasks/Day03/calc.hrl" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Tasks/Day03/calc_parse.erl" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Tasks/Day03/calc_read.erl" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/Tasks/99Problems/11-20/prob17.erl" afterPath="$PROJECT_DIR$/src/Tasks/99Problems/11-20/prob17.erl" />
+      <change beforePath="$PROJECT_DIR$/src/Tasks/99Problems/11-20/prob19.erl" afterPath="$PROJECT_DIR$/src/Tasks/99Problems/11-20/prob19.erl" />
       <change beforePath="$PROJECT_DIR$/src/Tasks/Day03/calc.erl" afterPath="$PROJECT_DIR$/src/Tasks/Day03/calc.erl" />
-      <change beforePath="$PROJECT_DIR$/src/Tasks/task.erl" afterPath="$PROJECT_DIR$/src/Tasks/task.erl" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,11 +22,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="calc.erl" pinned="false" current-in-tab="true">
+      <file leaf-file-name="calc.erl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tasks/Day03/calc.erl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="652">
-              <caret line="223" column="36" lean-forward="false" selection-start-line="223" selection-start-column="36" selection-end-line="223" selection-end-column="36" />
+            <state relative-caret-position="440">
+              <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="calc_read.erl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Tasks/Day03/calc_read.erl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="91" column="33" lean-forward="false" selection-start-line="91" selection-start-column="33" selection-end-line="91" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="calc_parse.erl" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Tasks/Day03/calc_parse.erl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="40">
+              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="calc.hrl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Tasks/Day03/calc.hrl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="259">
+              <caret line="38" column="17" lean-forward="false" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -35,8 +65,8 @@
       <file leaf-file-name="assertion.hrl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Test/assertion.hrl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state relative-caret-position="160">
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -114,9 +144,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/01-HelloWorld/helloworld.erl" />
-        <option value="$PROJECT_DIR$/src/Day02/Task01-MergeSort/mergesort.erl" />
-        <option value="$PROJECT_DIR$/src/assert.erl" />
         <option value="$PROJECT_DIR$/test/assert.erl" />
         <option value="$PROJECT_DIR$/src/Test/tests.erl" />
         <option value="$PROJECT_DIR$/src/Day02/Task01-99Probs/prob01.erl" />
@@ -164,7 +191,10 @@
         <option value="$PROJECT_DIR$/src/Tasks/99Problems/11-20/prob18.erl" />
         <option value="$PROJECT_DIR$/src/Tasks/99Problems/11-20/prob19.erl" />
         <option value="$PROJECT_DIR$/src/Tasks/task.erl" />
+        <option value="$PROJECT_DIR$/src/Tasks/Day03/calc.hrl" />
+        <option value="$PROJECT_DIR$/src/Tasks/Day03/calc_read.erl" />
         <option value="$PROJECT_DIR$/src/Tasks/Day03/calc.erl" />
+        <option value="$PROJECT_DIR$/src/Tasks/Day03/calc_parse.erl" />
       </list>
     </option>
   </component>
@@ -214,6 +244,13 @@
             </path>
             <path>
               <item name="homework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="homework" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Tasks" type="462c0819:PsiDirectoryNode" />
+              <item name="Day03" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="homework" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
             <path>
@@ -234,18 +271,18 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\Day03" />
+      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\99Problems\11-20" />
+      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\99Problems\54-60" />
+      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\Day02" />
+      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\Day02\Task01-99Probs" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\99Problems\01-10" />
       <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Test" />
       <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src" />
       <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\test" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\99Problems\11-20" />
-      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\99Problems\54-60" />
-      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\Day02" />
-      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\Day02\Task01-99Probs" />
-      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Day02\Task01-99Probs" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -402,7 +439,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3284169" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3284169" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -418,7 +455,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41789576" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41789576" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -447,21 +484,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Day02/Task01-99Probs/prob02.erl" />
-    <entry file="file://C:/Program Files/erl7.3/lib/eunit-2.2.13/include/eunit.hrl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="212" column="17" lean-forward="false" selection-start-line="212" selection-start-column="17" selection-end-line="212" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/erl7.3/lib/kernel-4.2/src/file.erl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="346" column="0" lean-forward="false" selection-start-line="346" selection-start-column="0" selection-end-line="346" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/assert.erl" />
     <entry file="file://$PROJECT_DIR$/src/erl_crash.dump">
       <provider selected="true" editor-type-id="text-editor">
@@ -592,6 +614,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2980">
           <caret line="149" column="75" lean-forward="false" selection-start-line="149" selection-start-column="75" selection-end-line="149" selection-end-column="75" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -719,6 +742,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="580">
           <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -738,26 +762,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tasks/99Problems/11-20/prob19.erl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="21" column="26" lean-forward="false" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/assertion.hrl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        <state relative-caret-position="160">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Tasks/Day03/calc.erl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="652">
-          <caret line="223" column="36" lean-forward="false" selection-start-line="223" selection-start-column="36" selection-end-line="223" selection-end-column="36" />
+        <state relative-caret-position="440">
+          <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Tasks/99Problems/11-20/prob19.erl">
+    <entry file="file://$PROJECT_DIR$/src/Tasks/Day03/calc.hrl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="21" column="26" lean-forward="false" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="26" />
+        <state relative-caret-position="259">
+          <caret line="38" column="17" lean-forward="false" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tasks/Day03/calc_read.erl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="91" column="33" lean-forward="false" selection-start-line="91" selection-start-column="33" selection-end-line="91" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tasks/Day03/calc_parse.erl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding />
         </state>
       </provider>
