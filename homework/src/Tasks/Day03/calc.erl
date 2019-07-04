@@ -22,7 +22,8 @@ test() -> [
   ?assertEqual(32.0, calculate("30 + 64 * 8 / (5-3) ^2 ^3")),
   ?assertEqual(9, calculate("max(6, 9)")),
   ?assertEqual(10, calculate("max(6, 9, 4) + min(2, 3, 1, 5)")),
-  ?assertEqual(0.5, calculate("sin(2*PI / 4) + cos(2*PI / 3)"))
+  ?assertEqual(0.5, calculate("sin(2*PI / 4) + cos(2*PI / 3)")),
+  ?assertEqual(1.6, calculate("min(6, max(1.4,1,1.6), 1 + sin(2*PI/4), 2)"))
 ].
 
 calculate(Input) ->

@@ -31,28 +31,41 @@ test() -> [
   ?assertEqual([6, 9, ?MAX(2)], read("max(6, 9)")),
   ?assertEqual([6, 9, 4, ?MAX(3), 2, 3, 1, 5, ?MIN(4), ?PLU], read("max(6, 9, 4) + min(2, 3, 1, 5)")),
   ?assertEqual([?PI, ?SIN], read("sin(PI)")),
-  ?assertEqual([2, ?PI, ?MUL, 4, ?DIV, ?SIN, 2, ?PI, ?MUL, 3, ?DIV, ?COS, ?PLU], read("sin(2*PI / 4) + cos(2*PI / 3)"))
+  ?assertEqual([2, ?PI, ?MUL, 4, ?DIV, ?SIN, 2, ?PI, ?MUL, 3, ?DIV, ?COS, ?PLU], read("sin(2*PI / 4) + cos(2*PI / 3)")),
+  ?assertEqual([6, 1.4, 1, 1.6, ?MAX(3), 1, 2, ?PI, ?MUL, 4, ?DIV, ?SIN, ?PLU, 2, ?MIN(4)], read("min(6, max(1.4,1,1.6), 1 + sin(2*PI/4), 2)"))
 ].
 
 %% Read input and parse from infix notation to Reverse Polish notation - Shunting-yard algorithm
 read(Input) -> lists:reverse(read(Input, [], [])).
 
-read([?SPACE_CODE | TInput], Output, OperatorStack) ->
-  read(TInput, Output, OperatorStack);
-read([44 | TInput], Output, OperatorStack) ->
-  read(TInput, Output, OperatorStack);
 read([], Output, []) ->
   Output;
 read([], Output, [H | OperatorStack]) ->
   read([], [H | Output], OperatorStack);
+read([?SPACE_CODE | TInput], Output, OperatorStack) ->
+  read(TInput, Output, OperatorStack);
+read(Input = [?COMMA_CODE | _], Output, OperatorStack) ->
+  {NewInput, NewOutput, NewOperatorStack} = read_comma(Input, Output, OperatorStack),
+  read(NewInput, NewOutput, NewOperatorStack);
 read(Input = [H | _], Output, OperatorStack) when ?IS_NUMBER(H) ->
   {NewInput, Number} = read_number(Input),
   {NewOutput, NewOperatorStack} = push_number(Number, Output, OperatorStack),
   read(NewInput, NewOutput, NewOperatorStack);
-read(Input = [H | _], Output, OperatorStack) ->
+read(Input, Output, OperatorStack) ->
   {NewInput, Operator} = read_operator(Input),
   {NewOutput, NewOperatorStack} = push_operator(Operator, Output, OperatorStack),
   read(NewInput, NewOutput, NewOperatorStack).
+
+read_comma([?COMMA_CODE | TInput], Output, [OpenBr = #op{name = open_brackets}, PrevOp = #op{n = ?ANY} | TOper]) ->
+  NewPrevOp = PrevOp#op{n = -1},
+  {TInput, Output, [OpenBr, NewPrevOp | TOper]};
+read_comma([?COMMA_CODE | TInput], Output, [OpenBr = #op{name = open_brackets}, PrevOp = #op{n = N} | TOper]) ->
+  NewPrevOp = PrevOp#op{n = N - 1},
+  {TInput, Output, [OpenBr, NewPrevOp | TOper]};
+read_comma([?COMMA_CODE | TInput], Output, OperatorStack = [#op{name = open_brackets} | _]) ->
+  {TInput, Output, OperatorStack};
+read_comma(Input = [?COMMA_CODE | _], Output, [HOper | TOper]) ->
+  read_comma(Input, [HOper | Output], TOper).
 
 %% Read token
 read_number(Input) ->
@@ -75,12 +88,6 @@ read_operator(Input, Letters) ->
   {Input, Operator}.
 
 %% Push token to respective stack
-push_number(Number, Output, [OpenBr = #op{name = open_brackets}, PrevOp = #op{n = ?ANY} | T]) ->
-  NewPrevOp = PrevOp#op{n = -1},
-  {[Number | Output], [OpenBr, NewPrevOp | T]};
-push_number(Number, Output, [OpenBr = #op{name = open_brackets}, PrevOp = #op{n = N} | T]) when N < 0 ->
-  NewPrevOp = PrevOp#op{n = N - 1},
-  {[Number | Output], [OpenBr, NewPrevOp | T]};
 push_number(Number, Output, OperatorStack) ->
   {[Number | Output], OperatorStack}.
 
@@ -88,9 +95,14 @@ push_operator(Operator, Output, []) ->
   {Output, [Operator]};
 push_operator(Operator = #op{name = open_brackets}, Output, OperatorStack) ->
   {Output, [Operator | OperatorStack]};
-push_operator(#op{name = close_brackets}, Output, [#op{name = open_brackets}, PrevOp = #op{n = N} | TOper]) when N < 0 ->
-  NewPrevOp = PrevOp#op{n = N * -1},
-  {[NewPrevOp | Output], TOper};
+push_operator(Operator = #op{name = close_brackets}, Output, [OpenBr = #op{name = open_brackets}, PrevOp = #op{n = ?ANY} | TOper]) ->
+  NewPrevOp = PrevOp#op{n = 0},
+  push_operator(Operator, Output, [OpenBr, NewPrevOp | TOper]);
+push_operator(Operator = #op{name = close_brackets}, Output, [OpenBr = #op{name = open_brackets}, PrevOp = #op{n = N} | TOper]) when N < 0 ->
+  NewPrevOp = PrevOp#op{n = (N - 1) * -1},
+  push_operator(Operator, Output, [OpenBr, NewPrevOp | TOper]);
+push_operator(#op{name = close_brackets}, Output, [#op{name = open_brackets}, PrevOp = #op{is_fun = true} | TOper]) ->
+  {[PrevOp | Output], TOper};
 push_operator(#op{name = close_brackets}, Output, [#op{name = open_brackets} | TOper]) ->
   {Output, TOper};
 push_operator(Operator = #op{name = close_brackets}, Output, [HOper | TOper]) ->

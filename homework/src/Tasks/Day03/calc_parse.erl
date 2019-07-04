@@ -26,7 +26,8 @@ test() -> [
   ?assertEqual(32.0, parse([30, 64, 8, ?MUL, 5, 3, ?MNS, 2, 3, ?POW, ?POW, ?DIV, ?PLU])),
   ?assertEqual(9, parse([6, 9, ?MAX(2)])),
   ?assertEqual(10, parse([6, 9, 4, ?MAX(3), 2, 3, 1, 5, ?MIN(4), ?PLU])),
-  ?assertEqual(0.5, parse([2, ?PI, ?MUL, 4, ?DIV, ?SIN, 2, ?PI, ?MUL, 3, ?DIV, ?COS, ?PLU]))
+  ?assertEqual(0.5, parse([2, ?PI, ?MUL, 4, ?DIV, ?SIN, 2, ?PI, ?MUL, 3, ?DIV, ?COS, ?PLU])),
+  ?assertEqual(1.6, parse([6, 1.4, 1, 1.6, ?MAX(3), 1, 2, ?PI, ?MUL, 4, ?DIV, ?SIN, ?PLU, 2, ?MIN(4)]))
 ].
 
 parse(Input) -> parse(Input, []).
@@ -42,12 +43,6 @@ parse([#op{func = Operation, n = Count} | TInput], Stack) ->
 
 pop(N, Stack) -> pop(N, 0, [], Stack).
 
-pop(any, _, Popped, []) ->
-  {Popped, []};
-pop(any, _, Popped, Stack = [#op{} | T]) ->
-  {Popped, Stack};
-pop(any, Count, Popped, [H | T]) ->
-  pop(any, Count + 1, [H | Popped], T);
 pop(N, N, Popped, Stack) ->
   {Popped, Stack};
 pop(N, Count, Popped, [H | T]) ->

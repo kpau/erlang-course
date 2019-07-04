@@ -8,7 +8,7 @@
 %%%-------------------------------------------------------------------
 -author("knikolov").
 
--record(op, {name, prec, assoc, func, n}).
+-record(op, {name, prec, assoc, func, n, is_fun = false}).
 -record(tk, {type, value}).
 
 -define(UNDEF, undefined).
@@ -19,6 +19,7 @@
 -define(NINE_CODE, 57).
 -define(SPACE_CODE, 32).
 -define(DOT_CODE, 46).
+-define(COMMA_CODE, 44).
 -define(A_CODE, 65).
 -define(Z_CODE, 90).
 
@@ -53,13 +54,13 @@ number(N) ->
 
 %% Cast Operator
 operator("max") ->
-  #op{name = max, prec = 5, assoc = right, func = fun max/1, n = ?ANY};
+  #op{name = max, prec = 5, assoc = right, func = fun max/1, n = ?ANY, is_fun = true};
 operator("min") ->
-  #op{name = min, prec = 5, assoc = right, func = fun min/1, n = ?ANY};
+  #op{name = min, prec = 5, assoc = right, func = fun min/1, n = ?ANY, is_fun = true};
 operator("sin") ->
-  #op{name = sin, prec = 5, assoc = right, func = fun sin/1, n = 1};
+  #op{name = sin, prec = 5, assoc = right, func = fun sin/1, n = 1, is_fun = true};
 operator("cos") ->
-  #op{name = cos, prec = 5, assoc = right, func = fun cos/1, n = 1};
+  #op{name = cos, prec = 5, assoc = right, func = fun cos/1, n = 1, is_fun = true};
 operator("^") ->
   #op{name = power, prec = 4, assoc = right, func = fun power/1, n = 2};
 operator("*") ->
