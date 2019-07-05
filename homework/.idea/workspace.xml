@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3879afc3-33b7-4f80-b042-e770487d3d2b" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/Tasks/99Problems/11-20/prob20.erl" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/Tasks/99Problems/11-20/prob19.erl" afterPath="$PROJECT_DIR$/src/Tasks/99Problems/11-20/prob19.erl" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,11 +18,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="prob19.erl" pinned="false" current-in-tab="true">
+      <file leaf-file-name="prob19.erl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Tasks/99Problems/11-20/prob19.erl">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="200">
               <caret line="22" column="23" lean-forward="false" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="prob20.erl" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Tasks/99Problems/11-20/prob20.erl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -80,7 +90,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/test/assert.erl" />
         <option value="$PROJECT_DIR$/src/Test/tests.erl" />
         <option value="$PROJECT_DIR$/src/Day02/Task01-99Probs/prob01.erl" />
         <option value="$PROJECT_DIR$/src/Day02/Task01-99Probs/prob02.erl" />
@@ -131,6 +140,7 @@
         <option value="$PROJECT_DIR$/src/Tasks/Day03/calc.hrl" />
         <option value="$PROJECT_DIR$/src/Tasks/Day03/calc_read.erl" />
         <option value="$PROJECT_DIR$/src/Tasks/99Problems/11-20/prob19.erl" />
+        <option value="$PROJECT_DIR$/src/Tasks/99Problems/11-20/prob20.erl" />
       </list>
     </option>
   </component>
@@ -183,7 +193,15 @@
               <item name="homework" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Tasks" type="462c0819:PsiDirectoryNode" />
-              <item name="Day03" type="462c0819:PsiDirectoryNode" />
+              <item name="99Problems" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="homework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="homework" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Tasks" type="462c0819:PsiDirectoryNode" />
+              <item name="99Problems" type="462c0819:PsiDirectoryNode" />
+              <item name="11-20" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="homework" type="b2602c69:ProjectViewProjectNode" />
@@ -207,18 +225,18 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\Day03" />
-      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\99Problems\11-20" />
-      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\99Problems\54-60" />
-      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\Day02" />
-      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\Day02\Task01-99Probs" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\99Problems\01-10" />
       <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Test" />
       <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src" />
       <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\test" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\99Problems\11-20" />
+      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\Day03" />
+      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\99Problems\54-60" />
+      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\Day02" />
+      <recent name="C:\Users\knikolov\Desktop\kris\erlang\homework\src\Tasks\Day02\Task01-99Probs" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -381,7 +399,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3411996" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3411996" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3411996" sideWeight="0.4978678" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32940018" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32940018" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -391,7 +409,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41789576" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41789576" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -420,7 +438,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Test/assert.erl" />
     <entry file="file://$PROJECT_DIR$/src/erl_crash.dump">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -742,6 +759,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="22" column="23" lean-forward="false" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Tasks/99Problems/11-20/prob20.erl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
           <folding />
         </state>
       </provider>
