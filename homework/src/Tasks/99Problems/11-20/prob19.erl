@@ -6,30 +6,34 @@
 %%% @end
 %%% Created : 19. Jun 2019 17:46
 %%%-------------------------------------------------------------------
--module(prob18).
+-module(prob19).
 -author("knikolov").
 -include_lib("../../../Test/assertion.hrl").
 
 %% API
--export([test/0, slice/3]).
+-export([test/0, rotate/2]).
 
 test() -> [
-  ?assertEqual([1], slice([1], 1, 1)),
-  ?assertEqual([1], slice([1, 2], 1, 1)),
-  ?assertEqual([2, 3, 4], slice([1, 2, 3, 4, 5], 2, 4)),
-  ?assertEqual([4], slice([1, 2, 3, 4], 4, 4)),
-  ?assertEqual("bc", slice("abcde", 2, 3)),
-  ?assertEqual([a, s], slice([a, s, d], 1, 2))
+  ?assertEqual([], rotate([], 0)),
+  ?assertEqual([1], rotate([1], 1)),
+  ?assertEqual([1, 2, 3], rotate([1, 2, 3], 0)),
+  ?assertEqual([3, 4, 5, 1, 2], rotate([1, 2, 3, 4, 5], 2)),
+  ?assertEqual([4, 5, 1, 2, 3], rotate([1, 2, 3, 4, 5], -2)),
+  ?assertEqual("defghabc", rotate("abcdefgh", 3)),
+  ?assertEqual("ghabcdef", rotate("abcdefgh", -2))
 ].
 
-%% Problem 18
-%% (**) Extract a slice from a list.
-%% Given two indices, i and k, the slice is the list containing the elements between the i'th and k'th element of the original list (both limits included). Start counting the elements with 1.
+%% Problem 19
+%% (**) Rotate a list N places to the left.
+%% Hint: Use the predefined functions length and (++).
 
-slice(Input, I, K) -> slice(Input, I, K, []).
+rotate(Input, N) -> rotate(Input, N, [], []).
 
-slice(_, 1, 0, Result) -> lists:reverse(Result);
-slice([H | T], 1, K, Result) ->
-  slice(T, 1, K - 1, [H | Result]);
-slice([_ | T], I, K, Result) ->
-  slice(T, I - 1, K - 1, Result).
+rotate(Input, N, Start, End) when N < 0 ->
+  rotate(Input, length(Input) + N, Start, End);
+rotate([], _, Start, End) ->
+  lists:reverse(Start) ++ lists:reverse(End);
+rotate([H | T], 0, Start, End) ->
+  rotate(T, 0, [H | Start], End);
+rotate([H | T], N, Start, End) ->
+  rotate(T, N - 1, Start, [H | End]).
