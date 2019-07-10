@@ -8,9 +8,9 @@
 %%%-------------------------------------------------------------------
 -define(assertEqual(Expect, Expr),
   begin
-    ((fun (__X) ->
+    ((fun(__X) ->
       case (Expr) of
-        __X -> { pass,
+        __X -> {pass,
           {
             assertEqual,
             {module, ?MODULE},
@@ -19,7 +19,7 @@
             {expected, __X},
             {value, __X}
           }};
-        __V -> { fail,
+        __V -> {fail,
           {
             assertEqual,
             {module, ?MODULE},
@@ -32,20 +32,109 @@
       end)(Expect))
   end).
 
-%%%% API
-%%-export([equal/2]).
-%%
-%%equal(X, Y) -> result(equal, [X, Y], X == Y).
-%%
-%%result(_, _, true) -> ok;
-%%result(Assertion, Params, Result) ->
-%%  print(Assertion, Params, Result),
-%%  ok.
-%%
-%%
-%%print(Assertion, Params, Result) ->
-%%  io:format("~p: ~p ~p~n", [message(Result), Assertion, Params]).
-%%
-%%message(true) -> ok;
-%%message(false) -> fail.
+-define(assertRun(Expr),
+  begin
+    ((fun() ->
+      Result = Expr,
+      {pass,
+          {
+            assertRun,
+            {module, ?MODULE},
+            {line, ?LINE},
+            {expression, (??Expr)},
+            {expected, nil},
+            {value, Result}
+          }}
+      end)())
+  end).
 
+-define(assertNotException(Expr),
+  begin
+    ((fun() ->
+      try (Expr) of
+        __V -> {pass,
+          {
+            assertNotException,
+            {module, ?MODULE},
+            {line, ?LINE},
+            {expression, (??Expr)},
+            {value, __V}
+          }}
+      catch __C:__T -> {fail,
+        {
+          assertNotException,
+          {module, ?MODULE},
+          {line, ?LINE},
+          {expression, (??Expr)},
+          {class, __C},
+          {term, __T}
+        }}
+      end
+      end)())
+  end).
+
+-define(assertReceive(Timeout, Expect, Expr),
+  begin
+    ((fun(__X) ->
+      Expr,
+      receive
+        Expect -> {pass,
+          {
+            assertReceive,
+            {module, ?MODULE},
+            {line, ?LINE},
+            {expression, (??Expr)},
+            {expected, __X},
+            {value, __X}
+          }}
+      after Timeout ->
+        receive
+          __V -> {fail,
+            {
+              assertReceive,
+              {module, ?MODULE},
+              {line, ?LINE},
+              {expression, (??Expr)},
+              {expected, __X},
+              {value, __V}
+            }}
+        after 0 -> {fail,
+          {
+            assertReceive,
+            {module, ?MODULE},
+            {line, ?LINE},
+            {expression, (??Expr)},
+            {expected, __X},
+            {value, timeout}
+          }}
+        end
+      end
+      end)(Expect))
+  end).
+
+-define(assertNotReceive(Timeout, Expect, Expr),
+  begin
+    ((fun(__X) ->
+      Expr,
+      receive
+        Expect -> {fail,
+          {
+            assertReceive,
+            {module, ?MODULE},
+            {line, ?LINE},
+            {expression, (??Expr)},
+            {expected, __X},
+            {value, __X}
+          }}
+      after Timeout -> {pass,
+        {
+          assertReceive,
+          {module, ?MODULE},
+          {line, ?LINE},
+          {expression, (??Expr)},
+          {expected, __X},
+          {value, timeout}
+        }}
+      end
+      end)(Expect))
+  end).

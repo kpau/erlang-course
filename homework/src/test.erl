@@ -62,6 +62,9 @@ print_tests({Total, _, Fail}) ->
 
 print_test([]) -> ok;
 print_test([{pass, _} | T]) -> print_test(T);
+print_test([{fail, {assertNotException, {module, Mod}, {line, Line}, {expression, Expr}, {class, Cl}, {term, Term}}} | T]) ->
+  io:format("[~p.erl:~p] ~p: (~p, ~p) ~p~n", [Mod, Line, assertNotException, Cl, Term, Expr]),
+  print_test(T);
 print_test([{fail, {Test, {module, Mod}, {line, Line}, {expression, Expr}, {expected, Expc}, {value, Val}}} | T]) ->
   io:format("[~p.erl:~p] ~p: (~p, ~p) ~p~n", [Mod, Line, Test, Expc, Val, Expr]),
   print_test(T).
