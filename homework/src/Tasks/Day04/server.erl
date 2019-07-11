@@ -47,8 +47,20 @@ test() -> [
     (fun() ->
       add(#event{name = "next", time_out = 10, description = "ddd"}),
       cancel(3)
-     end)())
-].
+     end)()),
+
+  ?assertReceive(2000, {done, #event{name = "rep", time_out = 1, description = "x", repeat = 2}}, add(#event{name = "rep", time_out = 1, description = "x", repeat = 2})),
+  ?assertReceive(2000, {done, #event{name = "rep", time_out = 1, description = "x", repeat = 1}}, fun() -> ok end),
+  ?assertNotReceive(200, {done, #event{name = "rep", time_out = 1, description = "x"}}, fun() -> ok end),
+  ?assertReceive(2000, {done, #event{name = "rep", time_out = 1, description = "x", repeat = 0}}, fun() -> ok end),
+
+  ?assertReceive(2000, {done, #event{name = "inf", time_out = 1, description = "x", repeat = infinity}}, add(#event{name = "inf", time_out = 1, description = "x", repeat = infinity})),
+  ?assertReceive(2000, {done, #event{name = "inf", time_out = 1, description = "x", repeat = infinity}}, fun() -> ok end),
+  ?assertReceive(2000, {done, #event{name = "inf", time_out = 1, description = "x", repeat = infinity}}, fun() -> ok end),
+  ?assertReceive(2000, {done, #event{name = "inf", time_out = 1, description = "x", repeat = infinity}}, fun() -> ok end),
+  ?assertReceive(2000, {done, #event{name = "inf", time_out = 1, description = "x", repeat = infinity}}, fun() -> ok end),
+  ?assertReceive(2000, {done, #event{name = "inf", time_out = 1, description = "x", repeat = infinity}}, fun() -> ok end)
+  ].
 
 start() ->
   register(?MODULE, Pid = spawn(?MODULE, init, [])),
@@ -183,27 +195,35 @@ add_event(State, Event = #event{id = new}) ->
   NewEvents = orddict:store(NewEventId, NewEvent, State#state.events),
   State#state{events = NewEvents, event_max_id = NewEventId}.
 
-cancel_event(State, EventId) ->
+cancel_event(State = #state{events = Events}, EventId) ->
   NewEvents =
-    case orddict:find(EventId, State#state.events) of
+    case orddict:find(EventId, Events) of
       {ok, #event{pid = EventPid}} ->
         event:cancel(EventPid),
-        orddict:erase(EventId, State#state.events);
+        orddict:erase(EventId, Events);
       error ->
-        State#state.events
+        Events
     end,
   State#state{events = NewEvents}.
 
-done_event(State, EventId) ->
+done_event(State = #state{events = Events}, EventId) ->
   NewEvents =
-    case orddict:find(EventId, State#state.events) of
+    case orddict:find(EventId, Events) of
       {ok, Event = #event{}} ->
         orddict:map(fun(_Ref, Pid) ->
           Pid ! {done, Event} end, State#state.clients),
 
-        orddict:erase(EventId, State#state.events);
+        case Event#event.repeat of
+          0 ->
+            orddict:erase(EventId, Events);
+          infinity ->
+            event:start_link(EventId, Event#event.time_out);
+          Repeat ->
+            event:start_link(EventId, Event#event.time_out),
+            orddict:update(EventId, fun(Event) -> Event#event{repeat = Repeat - 1} end, Events)
+        end;
       error ->
-        State#state.events
+        Events
     end,
   State#state{events = NewEvents}.
 
